@@ -24,7 +24,7 @@ After=multi-user.target
 [Service]
 Type=idle
 
-User=pi
+User=root
 ExecStart=/usr/bin/python /usr/local/bin/listen-for-shutdown.py
 
 Restart=always
