@@ -28,7 +28,7 @@ User=pi
 ExecStart=/usr/bin/python /usr/local/bin/listen-for-shutdown.py
 
 Restart=always
-RestartSec=0
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
