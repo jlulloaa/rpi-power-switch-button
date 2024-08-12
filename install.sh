@@ -27,6 +27,12 @@ chmod 644 ${SERVICEPATH}/${SERVICEFILE}
 # Once created the unit file, make systemd aware of it and enable it:
 systemctl daemon-reload
 systemctl enable ${SERVICEFILE}
+# Start the daemon:
+systemctl start ${SERVICEFILE}
+
 # Check the status:
+echo "To check the status, type: "
+echo "$ sudo systemctl status ${SERVICEFILE}"
+
 systemctl status ${SERVICEFILE}
 
