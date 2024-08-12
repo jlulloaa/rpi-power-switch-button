@@ -1,0 +1,34 @@
+# LISTEN-FOR-SHUTDOWN.service runs listen-for-shutdown.py as a daemon
+# This file will enable running the script listen-for-shutdown.py as a daemon, so it restarts
+# automatically if crashed.
+# For details on how to create and use this .service files, check the following website:
+# https://thepihut.com/blogs/raspberry-pi-tutorials/auto-starting-programs-on-the-raspberry-pi
+#
+# This file should be manually copied into /lib/systemd/system/ once the software has been
+# installed in the RPi
+#
+# File created by Jose Ulloa, August 2024, ISANDEX LTDA.
+#
+# INSTALLATION AND USAGE:
+# Once saved, change the permissions of the unit file:
+#   sudo chmod 644 /lib/systemd/system/listen-for-shutdown.service
+# Once created the unit file, make systemd aware of it and enable it:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable listen-for-shutdown.service
+# Check the status:
+#   sudo systemctl status listen-for-shutdown.service
+[Unit]
+Description=Listen for Shutdown button Service
+After=multi-user.target
+
+[Service]
+Type=idle
+
+User=pi
+ExecStart=/usr/bin/python /usr/local/bin/listen-for-shutdown.py
+
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=multi-user.target
